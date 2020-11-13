@@ -1,0 +1,19 @@
+{
+  "name": "js-from-scratch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "es6-module-loader": "^0.17.11",
+    "lite-server": "^2.6.1",
+    "tailwindcss": "^1.9.6",
+    "traceur": "0.0.111"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "lite-server"
+  },
+  "author": "",
+  "license": "ISC"
+}
