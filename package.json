@@ -5,14 +5,17 @@
   "main": "main.js",
   "dependencies": {
     "es6-module-loader": "^0.17.11",
+    "jquery": "^3.5.1",
     "lite-server": "^2.6.1",
+    "systemjs": "^6.7.1",
+    "systemjs-babel": "^0.2.2",
     "tailwindcss": "^1.9.6",
     "traceur": "0.0.111"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev" : "lite-server"
+    "dev": "lite-server"
   },
   "author": "",
   "license": "ISC"

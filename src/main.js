@@ -1,32 +1,33 @@
-import { MainAppComponent } from "./app-component.js"
-import { Button, Table } from "./elements.js"
+
+import $ from 'jquery';
+import { BodyComponent, NavigationComponent } from "./app-component.js"
+import { Button, Table } from "./elements/elements.js"
 
 
-// (function (){
+export default class App {
+    run(){
+        const nav = new NavigationComponent();
+        nav.render();
+        const base = new BodyComponent();
+        base.render();
+
+        
+        
+        // const btnElement = document.querySelector(`#${button.getId()}`);
+        // btnElement.addEventListener('click',function(event){
+        //     button.onClick(event);
+        // })
+        
+        // btnElement.addEventListener('mouseover',function(event){
+        //     console.log(event)
+        //     // button.onClick(event);
+        // })
+    }
+    
+}
+
+export let app = new App();
+app.run();
 
 
-const base = new MainAppComponent("body");
-// const container = new MainAppComponent(".container");
-const button = new Button("Click me!", { "class": ["mdl-button", "mdl-js-button", "mdl-button--raised"]  , "id" : ["btn-demo"]});
-const table = new Table({ "class": "mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp".split(" ") });
 
-base.appendElement(button);
-base.appendElement(table);
-// container.appendElement(btnElement);
-
-base.render();
-
-
-const btnElement = document.querySelector(`#${button.getId()}`);
-btnElement.addEventListener('click',function(event){
-    button.onClick(event);
-})
-
-btnElement.addEventListener('mouseover',function(event){
-    console.log(event)
-    // button.onClick(event);
-})
-// document.addEventListener("DOMContentLoaded", base.render);
-
-
-// }())

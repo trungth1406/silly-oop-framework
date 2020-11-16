@@ -1,26 +1,39 @@
 import { BaseComponent } from './base-component.js'
+import { BaseElement } from './elements/baseElement.js';
+import { Button, NavigationSideBar as MenuBar, Table } from './elements/elements.js'
 
-export class MainAppComponent extends BaseComponent {
+export class NavigationComponent extends BaseComponent {
 
-    render() {
-        const mainDiv = document.createElement("div");
-        mainDiv.setAttribute("class", "container");
-        const htmlElement = document.querySelector(this.componentName);
-        htmlElement.appendChild(mainDiv);
-        this.childrenElements.forEach(item => {
-            const element = this.htmlStringToElement(item.getElement());
-            htmlElement.appendChild(element);
-        })
+    getComponentName() {
+        return `<div class = "nav-container"></div>`
     }
 
-    appendElement(element) {
-        this.childrenElements.push(element);
+    getElements() {
+        const navigation = new MenuBar().generateElement();
+        const button = new Button(
+            { "id": "my-btn", "class": "button is-warning".split(" ") },
+            { "props": { "name": 'click me' } }).generateElement();
+        navigation.appendChild(button.htmlElement);
+        return [navigation];
     }
 
-    htmlStringToElement(eleString){
-        var template = document.createElement('template');
-        template.innerHTML = eleString;
-        return template.content.firstChild;
+
+}
+
+export class BodyComponent extends BaseComponent {
+
+    getComponentName() {
+        return `<div class = "container"> </div>`
+    }
+
+    getElements() {
+        const table = new Table({},
+            {
+                "props": {
+                    "headers": ['a', 'b', 'c']
+                }
+            }).generateElement();
+        return [table];
     }
 
 }
