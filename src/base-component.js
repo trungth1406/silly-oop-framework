@@ -21,6 +21,12 @@ export class BaseComponent {
         $("body").append(htmlElement);
     }
 
+    // rerender should be notified when there is changes in any elements or components.
+    // The goals is to find the element that was changed  then find all of its children to update changes.
+    rerender(){
+      
+    }
+
     getElements() {
         throw 'Override this';
     }

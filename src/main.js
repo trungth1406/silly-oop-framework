@@ -3,7 +3,10 @@ import $ from 'jquery';
 import { BodyComponent, NavigationComponent } from "./app-component.js"
 import { Button, Table } from "./elements/elements.js"
 
-
+//TODO: 
+//Fix weird bug
+//Design function for rerender when getting changes
+//Design Routing function
 export default class App {
     run(){
         const nav = new NavigationComponent();
@@ -14,7 +17,7 @@ export default class App {
         
         
         // const btnElement = document.querySelector(`#${button.getId()}`);
-        // btnElement.addEventListener('click',function(event){
+        // btnElement.addEventListener('click',fnction(event){
         //     button.onClick(event);
         // })
         

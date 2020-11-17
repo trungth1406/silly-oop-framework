@@ -1,0 +1,44 @@
+{
+  "headers": [
+    "Id",
+    "Name",
+    "Created date",
+    "Transaction type",
+    "Amount",
+    "From account"
+  ],
+  "content": [
+    {
+      "id": "1",
+      "name": "An sang",
+      "date": "1/10/2020",
+      "type": "deposit",
+      "amount": 20000,
+      "from": "First week"
+    },
+    {
+      "id": "2",
+      "name": "An toi",
+      "date": "2/10/2020",
+      "type": "deposit",
+      "amount": 20000,
+      "from": "Sinh hoat"
+    },
+    {
+      "id": "3",
+      "name": "An sang",
+      "date": "1/10/2020",
+      "type": "deposit",
+      "amount": 20000,
+      "from": "First week"
+    },
+    {
+      "id": "4",
+      "name": "An sang",
+      "date": "1/10/2020",
+      "type": "deposit",
+      "amount": 20000,
+      "from": "First week"
+    }
+  ]
+}

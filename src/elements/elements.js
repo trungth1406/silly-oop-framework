@@ -15,32 +15,23 @@ export class Table extends BaseElement {
     getElementString(props) {
         const property = props['props'];
         return `
-        <section class = "hero">
-        <div class="hero-body">
-        <table class="table">
-        <thead>
-          <tr>
-            ${property.headers.map(header => `<th>${header}</th>`)}
-          </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <th>1</th>
-            <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Leicester City</a> <strong>(C)</strong>
-            </td>
-            <td>38</td>
-            <td>23</td>
-            <td>12</td>
-            <td>3</td>
-            <td>68</td>
-            <td>36</td>
-            <td>+32</td>
-            <td>81</td>
-            <td>Qualification for the <a href="https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League#Group_stage" title="2016–17 UEFA Champions League">Champions League group stage</a></td>
-            </tr>
-       </tbody>
-       </div>
-       </section>`
+        <section class = "container column is-10">
+        <div class="section">
+            <table class="table">
+                <thead>
+                <tr>
+                    ${property.headers.map(header => `<th>${header}</th>`)}
+                </tr>
+                </thead>
+                <tbody>
+                    ${property.contents
+                              .map((content) => 
+                              `<tr id ='${content['id']}'> ${Object.keys(content)
+                                             .map(key => `<td>${content[key]}</td>`)} 
+                                 </tr>`)}
+                </tbody>
+        </div>
+        </section>`
     }
 
 
@@ -48,9 +39,9 @@ export class Table extends BaseElement {
 
 
 export class NavigationSideBar extends BaseElement {
-    
-    getElementString(){
-        return `<nav class="navbar" role="navigation" aria-label="main navigation">
+
+    getElementString() {
+        return `<nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="https://bulma.io">
             <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
@@ -112,4 +103,25 @@ export class NavigationSideBar extends BaseElement {
       </nav>
        `
     }
+}
+
+
+export class SideNavBar extends BaseElement {
+
+
+    getElementString(props) {
+        const property = props['props'];
+        return `
+        <aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile has-shadow">
+            <p class="menu-label">
+                ${property.header}
+            </p>
+            <ul class="menu-list">
+            <li><a>Dashboard</a></li>
+            <li><a>Customers</a></li>
+          </ul>
+        </aside>`;
+    }
+
+
 }
