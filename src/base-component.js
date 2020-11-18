@@ -13,7 +13,7 @@ export class BaseComponent {
     render() {
         const htmlElement = $(this.getComponentName());
         const allElements = this.getElements();
-        Array.prototype.push.apply(this.childrenElements,allElements);
+        Array.prototype.push.apply(this.childrenElements, allElements);
         this.childrenElements.forEach(item => {
             const element = $(item.htmlElement);
             htmlElement.append(element);

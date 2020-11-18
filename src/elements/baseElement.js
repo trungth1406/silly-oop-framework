@@ -1,6 +1,8 @@
 
 export class BaseElement {
 
+    static months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
     constructor(attributes,props) {
         this.id = null;
         this.htmlElement = null;

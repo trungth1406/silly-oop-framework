@@ -2,31 +2,29 @@
 import $ from 'jquery';
 import { BodyComponent, NavigationComponent } from "./app-component.js"
 import { Button, Table } from "./elements/elements.js"
+import Router from './router/router.js'
 
 //TODO: 
-//Fix weird bug
 //Design function for rerender when getting changes
-//Design Routing function
 export default class App {
-    run(){
+    run() {
         const nav = new NavigationComponent();
-        nav.render();
         const base = new BodyComponent();
-        base.render();
-
-        
-        
-        // const btnElement = document.querySelector(`#${button.getId()}`);
-        // btnElement.addEventListener('click',fnction(event){
-        //     button.onClick(event);
-        // })
-        
-        // btnElement.addEventListener('mouseover',function(event){
-        //     console.log(event)
-        //     // button.onClick(event);
-        // })
+        const routeMap = {
+            "/": [nav, base],
+            "/table": [nav]
+        }
+        const router = new Router(routeMap);
+        router.renderComponents(window.location.pathname);
+        const routeEvent = document.querySelectorAll("li.router");
+        for(let element of routeEvent){
+            element.addEventListener('click', function (event) {
+                const route = element.getAttribute('id');
+                router.renderComponents(route);
+            });
+        }
     }
-    
+
 }
 
 export let app = new App();

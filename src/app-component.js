@@ -1,6 +1,6 @@
 import { BaseComponent } from './base-component.js'
 import { BaseElement } from './elements/baseElement.js';
-import { Button, NavigationSideBar as MenuBar, SideNavBar, Table } from './elements/elements.js'
+import { Button, MenuBar as MenuBar, SideNavBar, Table } from './elements/elements.js'
 import dummyData from './service/services.js'
 
 export class NavigationComponent extends BaseComponent {
@@ -52,7 +52,7 @@ export class BodyComponent extends BaseComponent {
         }
 
         const sideNavBar = new SideNavBar({}, sideNavBarProps).generateElement();
-        const table = new Table({}, tableProps).generateElement();
+        const table = new Table('',tableProps).generateElement();
         return [sideNavBar, table];
     }
 

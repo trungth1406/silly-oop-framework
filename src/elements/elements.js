@@ -3,45 +3,50 @@ import { BaseElement } from './baseElement.js'
 
 export class Button extends BaseElement {
 
-    getElementString(props) {
-        const property = props['props'];
-        return `<button>${property.name}</button>`
-    }
+  getElementString(props) {
+    const property = props['props'];
+    return `<button>${property.name}</button>`
+  }
 
 }
 
 export class Table extends BaseElement {
 
-    getElementString(props) {
-        const property = props['props'];
-        return `
-        <section class = "container column is-10">
-        <div class="section">
-            <table class="table">
+  
+
+  getElementString(props) {
+    const property = props['props'];
+    const currentDate = new Date();
+    let monthName = BaseElement.months[currentDate.getMonth()];
+    return `
+        <section class = "section container column is-10">
+          <div class="container">
+          <h1 class="title">Transaction of  ${monthName}  ${currentDate.getFullYear()}</h1>
+            <table class="table is-striped is-narrow is-hoverable is-fullwidth">
                 <thead>
-                <tr>
-                    ${property.headers.map(header => `<th>${header}</th>`)}
-                </tr>
+                  <tr>
+                    ${property.headers.map(header => `<th>${header}</th>`).join('')}
+                   </tr>
                 </thead>
                 <tbody>
                     ${property.contents
-                              .map((content) => 
-                              `<tr id ='${content['id']}'> ${Object.keys(content)
-                                             .map(key => `<td>${content[key]}</td>`)} 
-                                 </tr>`)}
+        .map((content) =>
+          `<tr id ="${content['id']}"> 
+                                    ${Object.keys(content).map(key => `<td>${content[key]}</td>`).join('')} 
+                                 </tr>`).join('')}
                 </tbody>
-        </div>
+          </div>    
         </section>`
-    }
+  }
 
 
 }
 
 
-export class NavigationSideBar extends BaseElement {
+export class MenuBar extends BaseElement {
 
-    getElementString() {
-        return `<nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+  getElementString() {
+    return `<nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="https://bulma.io">
             <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
@@ -102,26 +107,26 @@ export class NavigationSideBar extends BaseElement {
         </div>
       </nav>
        `
-    }
+  }
 }
 
 
 export class SideNavBar extends BaseElement {
 
 
-    getElementString(props) {
-        const property = props['props'];
-        return `
+  getElementString(props) {
+    const property = props['props'];
+    return `
         <aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile has-shadow">
             <p class="menu-label">
                 ${property.header}
             </p>
             <ul class="menu-list">
-            <li><a>Dashboard</a></li>
-            <li><a>Customers</a></li>
+              <li id = "/"  class = "router" ><a>Dashboard</a></li>
+              <li id = "/table" class = "router"><a>Customers</a></li>
           </ul>
         </aside>`;
-    }
+  }
 
 
 }
