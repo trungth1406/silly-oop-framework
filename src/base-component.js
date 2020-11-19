@@ -1,39 +1,40 @@
+import { MenuBar, SideNavBar } from './elements/elements.js'
+
 
 export class BaseComponent {
 
-     constructor(...childrenElements) {
+    constructor(...childrenElements) {
         this.componentName = null;
-        this.childrenElements = childrenElements;
+        this.children = childrenElements;
+        this.cache = null;
     }
+
 
     getComponentName() {
         throw 'Overide this';
     }
 
     render() {
-        const htmlElement = $(this.getComponentName());
-        const allElements = this.getElements();
-        Array.prototype.push.apply(this.childrenElements, allElements);
-        this.childrenElements.forEach(item => {
-            const element = $(item.htmlElement);
-            htmlElement.append(element);
-        })
-        $("body").append(htmlElement);
+        const menuBar = new MenuBar().generateElement().htmlElement;
+        $("body").append(menuBar);
+        if (typeof this != "undefined" && this.cache != null) {
+            $("body").append(this.cache);
+        } else {
+            const htmlElement = $(this.getComponentName());
+            Array.prototype.push.apply(this.children, this.setUpElements());
+            const sideNav = new SideNavBar({ "id": "silly-side-nav" }, { "props": { "header": "Navigation" } }).generateElement().htmlElement;
+            htmlElement.append(sideNav);
+            this.children.forEach(item => { htmlElement.append($(item.htmlElement)); })
+            this.cache = htmlElement;
+            $("body").append(htmlElement);
+        }
+
     }
 
-    // rerender should be notified when there is changes in any elements or components.
-    // The goals is to find the element that was changed  then find all of its children to update changes.
-    rerender(){
-      
-    }
-
-    getElements() {
+    setUpElements() {
         throw 'Override this';
     }
 
-    getChildElements() {
-        return this.childrenElements;
-    }
 
 }
 

@@ -8,22 +8,27 @@ import Router from './router/router.js'
 //Design function for rerender when getting changes
 export default class App {
     run() {
-        const nav = new NavigationComponent();
         const base = new BodyComponent();
         const routeMap = {
-            "/": [nav, base],
-            "/table": [nav]
+            "/": [base],
+            "/table": []
         }
         const router = new Router(routeMap);
         router.renderComponents(window.location.pathname);
         const routeEvent = document.querySelectorAll("li.router");
-        for(let element of routeEvent){
+        for (let element of routeEvent) {
             element.addEventListener('click', function (event) {
                 const route = element.getAttribute('id');
+                const body = document.getElementsByTagName("body");
+                body[0].innerHTML = '';
                 router.renderComponents(route);
             });
         }
     }
+
+}
+
+const removeAllChildren = function () {
 
 }
 

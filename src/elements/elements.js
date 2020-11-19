@@ -12,7 +12,6 @@ export class Button extends BaseElement {
 
 export class Table extends BaseElement {
 
-  
 
   getElementString(props) {
     const property = props['props'];
